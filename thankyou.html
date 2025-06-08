@@ -3,22 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <title>Thank You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Css/style.css">
   <link rel="stylesheet" href="Css/common.css">
   <style>
     body {
-      font-family: inherit;
-      background: inherit;
-      color: inherit;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: 'Georgia', serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
       margin: 0;
       text-align: center;
+      transition: background 1s cubic-bezier(.4,2,.6,1);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .thankyou-layout {
+      display: flex;
+      flex: 1 1 auto;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100vw;
+      margin-top: 0;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .thankyou-animation {
+      flex: 0 0 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 340px;
+      min-width: 220px;
+      max-width: 420px;
+      margin-right: 2vw;
+      margin-left: 2vw;
+    }
+    .thankyou-animation svg {
+      width: 100%;
+      height: 320px;
+      display: block;
+    }
+    .thankyou-content {
+      flex: 1 1 400px;
+      background: rgba(30,30,50,0.82);
+      padding: 2.5rem 2rem;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.13);
+      color: inherit;
+      font-size: 1.15rem;
+      font-family: inherit;
+      max-width: 500px;
+      width: 90vw;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: left;
     }
     h1 {
       font-size: 2.5rem;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      margin-bottom: 1rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-align: left;
+    }
+    p {
+      color: var(--text-main);
+      margin: 1.2em 0 0 0;
+      text-align: left;
+    }
+    @media (max-width: 900px) {
+      .thankyou-layout {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .thankyou-animation {
+        margin: 0 0 2vw 0;
+        width: 90vw;
+        max-width: 400px;
+        height: 220px;
+      }
+      .thankyou-content {
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+      }
+      h1, p {
+        text-align: center;
+      }
+    }
+    @media (max-width: 700px) {
+      .thankyou-content {
+        padding: 1.2rem 0.7rem;
+        font-size: 1rem;
+        margin-top: 0;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .thankyou-animation {
+        height: 120px;
+        min-width: 120px;
+      }
     }
   </style>
 </head>
@@ -26,18 +125,6 @@
   <!-- Animated Side Accents -->
   <div class="side-accent left"></div>
   <div class="side-accent right"></div>
-  <!-- SVG Tech Background -->
-  <svg class="svg-bg" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g>
-      <rect x="100" y="100" width="600" height="400" rx="30" stroke="#8d6748" stroke-width="2" fill="none"/>
-      <rect x="200" y="200" width="400" height="200" rx="20" stroke="#bfae9e" stroke-width="2" fill="none"/>
-      <path d="M150 300 H650" stroke="#bfae9e" stroke-width="2" stroke-dasharray="10 8"/>
-      <path d="M400 100 V500" stroke="#8d6748" stroke-width="2" stroke-dasharray="12 10"/>
-      <circle cx="400" cy="300" r="40" stroke="#8d6748" stroke-width="2" fill="none"/>
-      <circle cx="400" cy="300" r="10" fill="#bfae9e"/>
-      <animateTransform attributeName="transform" type="rotate" from="0 400 300" to="360 400 300" dur="12s" repeatCount="indefinite"/>
-    </g>
-  </svg>
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">BLANSYN</div>
@@ -77,66 +164,26 @@
       </div>
     </div>
   </nav>
-  <!-- Thank You Content -->
-  <div>
-    <h1>🌸 Thank you for contacting Blansyn!</h1>
-    <p>We’ve received your message and will reach out soon.</p>
+  <!-- SVG Tech Animation Left Center + Thank You Content Right Center -->
+  <div class="thankyou-layout">
+    <div class="thankyou-animation">
+      <svg class="svg-bg" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <rect x="100" y="100" width="600" height="400" rx="30" stroke="#8d6748" stroke-width="2" fill="none"/>
+          <rect x="200" y="200" width="400" height="200" rx="20" stroke="#bfae9e" stroke-width="2" fill="none"/>
+          <path d="M150 300 H650" stroke="#bfae9e" stroke-width="2" stroke-dasharray="10 8"/>
+          <path d="M400 100 V500" stroke="#8d6748" stroke-width="2" stroke-dasharray="12 10"/>
+          <circle cx="400" cy="300" r="40" stroke="#8d6748" stroke-width="2" fill="none"/>
+          <circle cx="400" cy="300" r="10" fill="#bfae9e"/>
+          <animateTransform attributeName="transform" type="rotate" from="0 400 300" to="360 400 300" dur="12s" repeatCount="indefinite"/>
+        </g>
+      </svg>
+    </div>
+    <div class="thankyou-content">
+      <h1>🌸 Thank you for contacting Blansyn!</h1>
+      <p>We’ve received your message and will reach out soon.</p>
+    </div>
   </div>
-  <script>
-    // Only two themes: dark and light
-    const themes = [
-      // Dark theme (default)
-      {
-        '--bg-gradient': 'radial-gradient(ellipse at 30% 70%, #181824 40%, #23233a 70%, #0a0a1a 100%)',
-        '--text-main': '#bfc3d6',
-        '--text-nav': '#e0e0f0',
-        '--nav-bg': 'rgba(30, 30, 50, 0.25)',
-        '--nav-bg-hover': 'rgba(60, 40, 100, 0.35)',
-        '--nav-link-hover': 'rgba(120, 90, 220, 0.18)',
-        '--gradient-text': 'linear-gradient(90deg, #bfc3d6 10%, #a18fff 50%, #23233a 90%)',
-        '--switch-bg': '#23233a',
-        '--switch-knob': '#fff'
-      },
-      // Light theme
-      {
-        '--bg-gradient': 'radial-gradient(ellipse at 30% 70%, #e6eaff 40%, #bfc3d6 70%, #f8f9ff 100%)',
-        '--text-main': '#4b4b6d',
-        '--text-nav': '#3a3a5a',
-        '--nav-bg': 'rgba(220, 220, 255, 0.25)',
-        '--nav-bg-hover': 'rgba(180, 180, 240, 0.35)',
-        '--nav-link-hover': 'rgba(160, 140, 220, 0.13)',
-        '--gradient-text': 'linear-gradient(90deg, #6d4bc1 10%, #a18fff 50%, #bfc3d6 90%)',
-        '--switch-bg': '#e0e0f0',
-        '--switch-knob': '#6d4bc1'
-      }
-    ];
-
-    let themeIndex = 0; // 0: dark, 1: light
-    const modeSwitch = document.getElementById('modeSwitch');
-
-    function applyTheme(idx) {
-      const theme = themes[idx];
-      for (const key in theme) {
-        document.documentElement.style.setProperty(key, theme[key]);
-      }
-      if (idx === 1) {
-        document.body.classList.add('light-mode');
-        modeSwitch.classList.add('light');
-      } else {
-        document.body.classList.remove('light-mode');
-        modeSwitch.classList.remove('light');
-      }
-    }
-
-    // Manual theme switch (toggle between dark/light)
-    modeSwitch.onclick = () => {
-      themeIndex = themeIndex === 0 ? 1 : 0;
-      applyTheme(themeIndex);
-    };
-
-    // On load, apply dark theme
-    applyTheme(themeIndex);
-  </script>
   <script src="js/script.js"></script>
   <script src="js/scroll-nav.js"></script>
 </body>
