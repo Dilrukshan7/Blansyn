@@ -420,7 +420,7 @@
     <div class="page1">
         <div class="form">
             <h2>Contact Us</h2>
-            <form action="https://formspree.io/f/xblygraz" method="POST">
+            <form action="https://formsubmit.co/contect@blansyn.online" method="POST" />
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
 
@@ -429,6 +429,12 @@
 
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
+
+                <!-- Redirect after success -->
+  <input type="hidden" name="_next" value="https://www.blansyn.online/thankyou.html">
+
+  <!-- Disable CAPTCHA if desired -->
+  <input type="hidden" name="_captcha" value="false">
 
                 <button type="submit">Send Message</button>
                 <input type="hidden" name="_redirect" value="thankyou.html">
