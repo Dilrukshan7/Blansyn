@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blansyn is a science-driven innovation company building ethical AI tools like Alpha, a phishing detection and awareness platform. We blend tradition and technology to protect the future." />
+    <meta name="keywords" content="Blansyn, Alpha phishing tool, AI startup, ethical technology, foundational tech company, cybersecurity innovation, machine learning phishing detection, responsible AI" />
+
+    <title>Blansyn</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="Css/common.css">
+   
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="favicon.ico" type="">
+<link rel="manifest" href="/site.webmanifest"> <style>
+    l
+        :root {
+            --bg-gradient: radial-gradient(ellipse at 30% 70%, #181824 40%, #23233a 70%, #0a0a1a 100%);
+            --text-main: #bfc3d6;
+            --text-nav: #e0e0f0;
+            --nav-bg: rgba(30, 30, 50, 0.25);
+            --nav-bg-hover: rgba(60, 40, 100, 0.35);
+            --nav-link-hover: rgba(120, 90, 220, 0.18);
+            --gradient-text: linear-gradient(90deg, #bfc3d6 10%, #a18fff 50%, #23233a 90%);
+            --switch-bg: #23233a;
+            --switch-knob: #fff;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg-gradient);
+            overflow: hidden;
+            transition: background 1s cubic-bezier(.4,2,.6,1);
+        }
+        body.light-mode {
+            --bg-gradient: radial-gradient(ellipse at 30% 70%, #e6eaff 40%, #bfc3d6 70%, #f8f9ff 100%);
+            --text-main: #4b4b6d;
+            --text-nav: #3a3a5a;
+            --nav-bg: rgba(220, 220, 255, 0.25);
+            --nav-bg-hover: rgba(180, 180, 240, 0.35);
+            --nav-link-hover: rgba(160, 140, 220, 0.13);
+            --gradient-text: linear-gradient(90deg, #6d4bc1 10%, #a18fff 50%, #bfc3d6 90%);
+            --switch-bg: #e0e0f0;
+            --switch-knob: #6d4bc1;
+        }
+        /* Navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--nav-bg);
+            backdrop-filter: blur(8px);
+            padding: 1.2vw 3vw 1.2vw 3vw;
+            box-sizing: border-box;
+            box-shadow: 0 4px 24px 0 rgba(80,60,180,0.08);
+        }
+        .navbar .logo {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 2.2vw;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            color: var(--text-main);
+            opacity: 0.9;
+            user-select: none;
+            text-shadow: 0 2px 12px rgba(80,60,180,0.08);
+        }
+        .navbar .nav-links {
+            display: flex;
+            gap: 2em;
+        }
+        .navbar .nav-links a {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.2em;
+            color: var(--text-nav);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            padding: 0.4em 1em;
+            border-radius: 1em;
+            position: relative;
+            transition: 
+                background 0.3s cubic-bezier(.4,2,.6,1),
+                color 0.3s cubic-bezier(.4,2,.6,1),
+                transform 0.2s cubic-bezier(.4,2,.6,1);
+        }
+        .navbar .nav-links a::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 50%;
+            bottom: 0.2em;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #bfc3d6 0%, #fff 100%);
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(.4,2,.6,1), left 0.3s cubic-bezier(.4,2,.6,1);
+        }
+        .navbar .nav-links a:hover, .navbar .nav-links a:focus {
+            background: var(--nav-link-hover);
+            color: #fff;
+            transform: translateY(-4px) scale(1.08);
+        }
+        .navbar .nav-links a:hover::after, .navbar .nav-links a:focus::after {
+            width: 80%;
+            left: 10%;
+        }
+        /* Mode switch styles */
+        .mode-switch {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            background: transparent;
+            border: none;
+            outline: none;
+            transition: box-shadow 0.3s;
+            margin: 0 2vw;
+        }
+        .switch-bg {
+            width: 48px;
+            height: 26px;
+            background: var(--switch-bg);
+            border-radius: 13px;
+            position: relative;
+            transition: background 0.4s, box-shadow 0.3s;
+            box-shadow: 0 2px 8px rgba(80,60,180,0.08);
+        }
+        .switch-knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: var(--switch-knob);
+            border-radius: 50%;
+            transition: left 0.3s cubic-bezier(.4,2,.6,1), background 0.4s, box-shadow 0.3s;
+            box-shadow: 0 1px 4px rgba(80,60,180,0.10);
+        }
+        .mode-switch.light .switch-knob {
+            left: 25px;
+            background: var(--switch-knob);
+        }
+        .switch-icon {
+            position: absolute;
+            top: 5px;
+            left: 8px;
+            font-size: 1em;
+            opacity: 0.7;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .switch-icon.sun {
+            left: 8px;
+        }
+        .switch-icon.moon {
+            right: 8px;
+            left: auto;
+        }
+        .mode-switch:hover .switch-bg,
+        .mode-switch:focus .switch-bg {
+            box-shadow: 0 0 0 4px rgba(120,90,220,0.18);
+            background: linear-gradient(90deg, var(--switch-bg) 60%, #a18fff 100%);
+        }
+        .mode-switch:hover .switch-knob,
+        .mode-switch:focus .switch-knob {
+            box-shadow: 0 0 8px 2px #a18fff55;
+        }
+        .mode-switch:hover .switch-icon,
+        .mode-switch:focus .switch-icon {
+            opacity: 1;
+        }
+        /* Remove all mobile responsive styles */
+        /* Center tagline animation */
+        .center-tagline {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+        .tagline-anim {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1.5s;
+        }
+        .tagline-anim span {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 2.5vw;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            opacity: 0.95;
+            text-shadow: 0 2px 16px rgba(80,60,180,0.10);
+            display: inline-block;
+            animation: bounceIn 1.2s;
+            text-align: center;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.8) translateY(40px); opacity: 0; }
+            60% { transform: scale(1.05) translateY(-10px); opacity: 1; }
+            80% { transform: scale(0.97) translateY(2px);}
+            100% { transform: scale(1) translateY(0);}
+        }
+        /* Animated Side Accents and SVG Tech Background */
+        .side-accent {
+            position: fixed;
+            top: 0;
+            width: 120px;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.22;
+        }
+        .side-accent.left {
+            left: 0;
+            background: radial-gradient(circle at 40px 50vh, #e3c9b6 0%, transparent 80%);
+            animation: accentMoveLeft 8s ease-in-out infinite alternate;
+        }
+        .side-accent.right {
+            right: 0;
+            background: radial-gradient(circle at 80px 40vh, #e3eeff 0%, transparent 80%);
+            animation: accentMoveRight 9s ease-in-out infinite alternate;
+        }
+        @keyframes accentMoveLeft {
+            0% { background-position: 40px 50vh; }
+            100% { background-position: 60px 60vh; }
+        }
+        @keyframes accentMoveRight {
+            0% { background-position: 80px 40vh; }
+            100% { background-position: 60px 60vh; }
+        }
+        .svg-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.13;
+            animation: moveBg 12s linear infinite alternate;
+        }
+        @keyframes moveBg {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-30px) scale(1.03);}
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Side Accents -->
+    <div class="side-accent left"></div>
+    <div class="side-accent right"></div>
+    <!-- SVG Tech Background -->
+    <svg class="svg-bg" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <rect x="100" y="100" width="600" height="400" rx="30" stroke="#8d6748" stroke-width="2" fill="none"/>
+        <rect x="200" y="200" width="400" height="200" rx="20" stroke="#bfae9e" stroke-width="2" fill="none"/>
+        <path d="M150 300 H650" stroke="#bfae9e" stroke-width="2" stroke-dasharray="10 8"/>
+        <path d="M400 100 V500" stroke="#8d6748" stroke-width="2" stroke-dasharray="12 10"/>
+        <circle cx="400" cy="300" r="40" stroke="#8d6748" stroke-width="2" fill="none"/>
+        <circle cx="400" cy="300" r="10" fill="#bfae9e"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 400 300" to="360 400 300" dur="12s" repeatCount="indefinite"/>
+      </g>
+    </svg>
+    <!-- Navbar -->
+   <nav class="navbar">
+  <div class="logo">BLANSYN</div>
+  <div class="mode-switch" id="modeSwitch" title="Toggle dark/light mode">
+    <div class="switch-bg">
+      <span class="switch-icon sun">☀️</span>
+      <span class="switch-icon moon" style="right:8px;left:auto;">🌙</span>
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="form.html">Contact</a>
+    <a href="#">Design</a>
+  </div>
+  <div class="menu-icon" id="menuIcon" aria-label="Open navigation" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+<nav id="mobileNav" class="mobile-nav" style="display:none;">
+  <button class="close-icon" id="closeNav" aria-label="Close navigation">
+    <span class="bar1"></span>
+    <span class="bar2"></span>
+  </button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="form.html">Contact</a>
+  <a href="#">Design</a>
+  <div class="mode-switch" id="modeSwitchMobile" title="Toggle dark/light mode">
+    <div class="switch-bg">
+      <span class="switch-icon sun">☀️</span>
+      <span class="switch-icon moon" style="right:8px;left:auto;">🌙</span>
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</nav>
+    <!-- Center tagline animation -->
+    <div class="center-tagline">
+        <div class="tagline-anim">
+            <span>Explore <span style="background:linear-gradient(90deg,#a18fff,#6d4bc1,#bfc3d6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-fill-color:transparent;">Science and Tech</span> with us</span>
+        </div>
+    </div>
+
+    
+    <script>
+        // Only two themes: dark and light
+        const themes = [
+            // Dark theme (default)
+            {
+                '--bg-gradient': 'radial-gradient(ellipse at 30% 70%, #181824 40%, #23233a 70%, #0a0a1a 100%)',
+                '--text-main': '#bfc3d6',
+                '--text-nav': '#e0e0f0',
+                '--nav-bg': 'rgba(30, 30, 50, 0.25)',
+                '--nav-bg-hover': 'rgba(60, 40, 100, 0.35)',
+                '--nav-link-hover': 'rgba(120, 90, 220, 0.18)',
+                '--gradient-text': 'linear-gradient(90deg, #bfc3d6 10%, #a18fff 50%, #23233a 90%)',
+                '--switch-bg': '#23233a',
+                '--switch-knob': '#fff'
+            },
+            // Light theme
+            {
+                '--bg-gradient': 'radial-gradient(ellipse at 30% 70%, #e6eaff 40%, #bfc3d6 70%, #f8f9ff 100%)',
+                '--text-main': '#4b4b6d',
+                '--text-nav': '#3a3a5a',
+                '--nav-bg': 'rgba(220, 220, 255, 0.25)',
+                '--nav-bg-hover': 'rgba(180, 180, 240, 0.35)',
+                '--nav-link-hover': 'rgba(160, 140, 220, 0.13)',
+                '--gradient-text': 'linear-gradient(90deg, #6d4bc1 10%, #a18fff 50%, #bfc3d6 90%)',
+                '--switch-bg': '#e0e0f0',
+                '--switch-knob': '#6d4bc1'
+            }
+        ];
+
+        let themeIndex = 0; // 0: dark, 1: light
+        const modeSwitch = document.getElementById('modeSwitch');
+
+        function applyTheme(idx) {
+            const theme = themes[idx];
+            for (const key in theme) {
+                document.documentElement.style.setProperty(key, theme[key]);
+            }
+            if (idx === 1) {
+                document.body.classList.add('light-mode');
+                modeSwitch.classList.add('light');
+            } else {
+                document.body.classList.remove('light-mode');
+                modeSwitch.classList.remove('light');
+            }
+        }
+
+        // Manual theme switch (toggle between dark/light)
+        modeSwitch.onclick = () => {
+            themeIndex = themeIndex === 0 ? 1 : 0;
+            applyTheme(themeIndex);
+        };
+
+        // On load, apply dark theme
+        applyTheme(themeIndex);
+    </script>
+    <script src="js/script.js"></script>
+    <script src="js/scroll-nav.js"></script>
+</body>
+</html>
