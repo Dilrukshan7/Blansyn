@@ -420,7 +420,7 @@
     <div class="page1">
         <div class="form">
             <h2>Contact Us</h2>
-            <form>
+            <form action="https://formspree.io/f/xblygraz" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
 
@@ -431,6 +431,8 @@
                 <textarea id="message" name="message" rows="5" required></textarea>
 
                 <button type="submit">Send Message</button>
+                <input type="hidden" name="_redirect" value="thankyou.html">
+
             </form>
         </div>
     </div>
