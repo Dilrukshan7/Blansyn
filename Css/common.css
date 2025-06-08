@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #181824;
+  color: #bfc3d6;
+  overflow-x: hidden;
+}
+.navbar {
+  position: fixed;
+  top: 0; left: 0; width: 100vw;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(30, 30, 50, 0.25);
+  backdrop-filter: blur(8px);
+  padding: 1.2vw 3vw;
+  box-sizing: border-box;
+  box-shadow: 0 4px 24px 0 rgba(80,60,180,0.08);
+}
+.logo {
+  font-size: 2.2vw;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #bfc3d6;
+  opacity: 0.9;
+  user-select: none;
+}
+.nav-links {
+  display: flex;
+  gap: 2em;
+}
+.nav-links a {
+  font-size: 1.2em;
+  color: #e0e0f0;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  padding: 0.4em 1em;
+  border-radius: 1em;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.nav-links a:hover, .nav-links a:focus {
+  background: rgba(120, 90, 220, 0.18);
+  color: #fff;
+  transform: translateY(-4px) scale(1.08);
+}
+.container {
+  margin: 7vw auto 0 auto;
+  max-width: 800px;
+  background: rgba(30,30,50,0.82);
+  padding: 3rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.13);
+  position: relative;
+  z-index: 10;
+  color: inherit;
+  font-size: 1.15rem;
+  font-family: inherit;
+  margin-top: 90px;
+}
+@media (max-width: 700px) {
+  .container {
+    padding: 1.2rem 0.7rem;
+    font-size: 1rem;
+    margin-top: 70px;
+  }
+}
+/* ...existing styles... */
+
+/* Always show vertical scrollbar for body */
+body {
+    overflow-y: scroll;
+    /* ...existing body styles... */
+}
+
+/* Optional: Style the scrollbar for better appearance */
+body::-webkit-scrollbar {
+    width: 10px;
+    background: #23233a;
+}
+body::-webkit-scrollbar-thumb {
+    background: #6d4bc1;
+    border-radius: 6px;
+}
+body::-webkit-scrollbar-thumb:hover {
+    background: #a18fff;
+}
